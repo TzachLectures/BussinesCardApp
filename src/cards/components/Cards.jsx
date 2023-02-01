@@ -79,7 +79,7 @@ export default function Cards() {
   return (
     <>
       {cards.map((card) => (
-        <CardBussinesComponent card={card} />
+        <CardBussinesComponent card={card} key={card._id} />
       ))}
     </>
   );
