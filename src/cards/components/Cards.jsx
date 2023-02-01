@@ -1,3 +1,4 @@
+import { Grid, Typography } from "@mui/material";
 import React from "react";
 import CardBussinesComponent from "./card/CardBussinesComponent";
 
@@ -76,11 +77,40 @@ export default function Cards() {
       user_id: "4235234234mfnjrb2h3vbry23",
     },
   ];
+
+  const handleDelete = (id) => {
+    console.log(`Card ${id} is deleted`);
+  };
+  const handleEdit = (id) => {
+    console.log(`Card ${id} is Edited`);
+  };
+  const handleLike = (id) => {
+    console.log(`Card ${id} is Liked`);
+  };
+
+  if (cards.length == 0) {
+    return (
+      <Typography m={2}>
+        Oops... it seems there are no business cards to display
+      </Typography>
+    );
+  }
+
   return (
     <>
-      {cards.map((card) => (
-        <CardBussinesComponent card={card} key={card._id} />
-      ))}
+      <Grid container spacing={2}>
+        {cards.map((card, index) => (
+          <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+            <CardBussinesComponent
+              card={card}
+              key={card._id}
+              handleDelete={handleDelete}
+              handleEdit={handleEdit}
+              handleLike={handleLike}
+            />
+          </Grid>
+        ))}
+      </Grid>
     </>
   );
 }
