@@ -1,5 +1,7 @@
 import { CardContent, CardHeader, Divider, Typography } from "@mui/material";
+import { number, string } from "prop-types";
 import React from "react";
+import addressType from "../../models/types/addressType";
 
 export default function CardBody({
   title,
@@ -29,3 +31,11 @@ export default function CardBody({
     </>
   );
 }
+
+CardBody.propTypes = {
+  title: string.isRequired,
+  subtitle: string.isRequired,
+  phone: string.isRequired,
+  address: addressType.isRequired,
+  cardNumber: number,
+};

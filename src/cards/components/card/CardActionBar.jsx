@@ -4,6 +4,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import CallIcon from "@mui/icons-material/Call";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { func, string } from "prop-types";
+
 export default function CardActionBar({
   handleDelete,
   handleEdit,
@@ -37,3 +39,10 @@ export default function CardActionBar({
     </>
   );
 }
+
+CardActionBar.propTypes = {
+  handleDelete: func.isRequired,
+  handleEdit: func.isRequired,
+  handleLike: func.isRequired,
+  id: string.isRequired,
+};

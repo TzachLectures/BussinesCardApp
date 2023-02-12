@@ -18,6 +18,8 @@ import React from "react";
 import CardHead from "./CardHead";
 import CardBody from "./CardBody";
 import CardActionBar from "./CardActionBar";
+import cardType from "../../models/types/cardType";
+import { func } from "prop-types";
 
 export default function CardBussinesComponent({
   card,
@@ -48,3 +50,10 @@ export default function CardBussinesComponent({
     </>
   );
 }
+
+CardBussinesComponent.propTypes = {
+  card: cardType.isRequired,
+  handleDelete: func,
+  handleEdit: func,
+  handleLike: func,
+};
