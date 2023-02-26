@@ -34,11 +34,7 @@ export default function SandBox() {
             label="Coutries Page"
             sx={{ color: "black" }}
           />
-          <NavItem
-            to="effect"
-            label="Coutries Page finished"
-            sx={{ color: "black" }}
-          />
+          <NavItem to="render" label="Render" sx={{ color: "black" }} />
         </Toolbar>
       </AppBar>
       <Container>

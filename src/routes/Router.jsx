@@ -9,6 +9,8 @@ import Effect from "../sandbox/effectHook/Effect";
 import FirstEffect from "../sandbox/effectHook/FirstEffect";
 import CallBackHook from "../sandbox/memoryHooks/CallBackHook";
 import Memo from "../sandbox/memoryHooks/Memo";
+import Counter2 from "../sandbox/render/Counter2";
+import RenderComponent from "../sandbox/render/RenderComponent";
 import SandBox from "../sandbox/SandBox";
 import Counter from "../sandbox/stateHook/Counter";
 import MyDetails from "../sandbox/stateHook/MyDetails";
@@ -35,6 +37,7 @@ export default function Router() {
         <Route path="firsteffect" element={<FirstEffect />} />
         <Route path="countries" element={<Countries />} />
         <Route path="effect" element={<Effect />} />
+        <Route path="render" element={<RenderComponent />} />
       </Route>
       <Route path="*" element={<ErrorPage />} />
     </Routes>

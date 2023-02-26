@@ -12,7 +12,7 @@ import Todo from "./sandbox/stateHook/Todo";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <BrowserRouter>
         <Layout>
           <Router />

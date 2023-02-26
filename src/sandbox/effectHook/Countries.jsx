@@ -1,5 +1,6 @@
 import { Avatar, Box, Button, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import Country2 from "./Country2";
 
 export default function Countries() {
   //יש לייבא את כל המדינות מהרסט אייפיאיי שעבדנו איתו בעבר
@@ -8,6 +9,13 @@ export default function Countries() {
   const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
+    // const getData = async () => {
+    //   let result = await fetch("https://restcountries.com/v3.1/all");
+    //   result = await result.json();
+    //   setCountries(result);
+    // };
+    // getData();
+
     console.log("fetching....");
     fetch("https://restcountries.com/v3.1/all")
       .then((res) => res.json())
@@ -22,24 +30,7 @@ export default function Countries() {
       <Button onClick={() => setRefresh(!refresh)}>Refresh</Button>
       {countries
         ? countries.map((country, i) => {
-            return (
-              <Box
-                display="flex"
-                sx={{ justifyContent: "space-between" }}
-                key={JSON.stringify(country)}
-              >
-                <Avatar
-                  src={country.flags.png}
-                  alt={`${country.name.common} flag`}
-                />
-                <Typography sx={{ width: "150px" }}>
-                  {country.name.common}
-                </Typography>
-                <Typography sx={{ width: "150px" }}>
-                  {country.capital?.[0]}
-                </Typography>
-              </Box>
-            );
+            return <Country2 country={country} key={JSON.stringify(country)} />;
           })
         : "Loading..."}
     </div>

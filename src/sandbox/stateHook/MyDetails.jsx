@@ -15,9 +15,11 @@ export default function MyDetails() {
         label="First Name"
         variant="outlined"
         onChange={(e) => {
-          setPerson({
-            ...person,
-            fullName: { ...person.fullName, firstName: e.target.value },
+          setPerson((prev) => {
+            return {
+              ...prev,
+              fullName: { ...prev.fullName, firstName: e.target.value },
+            };
           });
         }}
       />
