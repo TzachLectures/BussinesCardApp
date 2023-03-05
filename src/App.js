@@ -9,14 +9,25 @@ import FatherComponent from "./sandbox/propTypes/FatherComponent";
 import Counter from "./sandbox/stateHook/Counter";
 import MyDetails from "./sandbox/stateHook/MyDetails";
 import Todo from "./sandbox/stateHook/Todo";
+import {
+  createTheme,
+  ThemeProvider as MuiThemeProvider,
+} from "@mui/material/styles";
 
 function App() {
+  // const theme = createTheme({
+  //   palette: {
+  //     mode: "dark",
+  //   },
+  // });
   return (
     <div>
       <BrowserRouter>
+        {/* <MuiThemeProvider theme={theme}> */}
         <Layout>
           <Router />
         </Layout>
+        {/* </MuiThemeProvider> */}
       </BrowserRouter>
     </div>
   );
