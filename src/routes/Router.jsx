@@ -14,6 +14,7 @@ import Father from "../sandbox/context/Father";
 import Countries from "../sandbox/effectHook/Countries";
 import Effect from "../sandbox/effectHook/Effect";
 import FirstEffect from "../sandbox/effectHook/FirstEffect";
+import MyForm from "../sandbox/forms/MyForm";
 import CallBackHook from "../sandbox/memoryHooks/CallBackHook";
 import Memo from "../sandbox/memoryHooks/Memo";
 import Counter2 from "../sandbox/render/Counter2";
@@ -47,7 +48,7 @@ export default function Router() {
         <Route path="effect" element={<Effect />} />
         <Route path="render" element={<Get2Countries />} />
       </Route>
-      <Route path="test" element={<Father />} />
+      <Route path="test" element={<MyForm />} />
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   );
