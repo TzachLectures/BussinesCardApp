@@ -11,6 +11,7 @@ import MyDetails from "./sandbox/stateHook/MyDetails";
 import Todo from "./sandbox/stateHook/Todo";
 import ThemeProvider from "./providers/ThemeProvider";
 import SnackbarProvider from "./providers/SnackbarProvider";
+import UserProvider from "./users/providers/UserProvider";
 
 function App() {
   return (
@@ -18,9 +19,11 @@ function App() {
       <BrowserRouter>
         <SnackbarProvider>
           <ThemeProvider>
-            <Layout>
-              <Router />
-            </Layout>
+            <UserProvider>
+              <Layout>
+                <Router />
+              </Layout>
+            </UserProvider>
           </ThemeProvider>
         </SnackbarProvider>
       </BrowserRouter>
