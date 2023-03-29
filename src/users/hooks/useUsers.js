@@ -9,6 +9,7 @@ import {
 import { useUser } from "../providers/UserProvider";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModel";
+import normalizeUser from "../helpers/normalization/normalizeUser";
 
 const useUsers = () => {
   const [isLoading, setLoading] = useState(true);
@@ -46,21 +47,21 @@ const useUsers = () => {
     setUser(null);
   }, [setUser]);
 
-  //   const handleSignup = useCallback(
-  //     async (userFromClient) => {
-  //       try {
-  //         const normalizedUser = normalizeUser(userFromClient);
-  //         await signup(normalizedUser);
-  //         await handleLogin({
-  //           email: userFromClient.email,
-  //           password: userFromClient.password,
-  //         });
-  //       } catch (error) {
-  //         requestStatus(false, error, null);
-  //       }
-  //     },
-  //     [requestStatus, handleLogin]
-  //   );
+  const handleSignup = useCallback(
+    async (userFromClient) => {
+      try {
+        const normalizedUser = normalizeUser(userFromClient);
+        await signup(normalizedUser);
+        await handleLogin({
+          email: userFromClient.email,
+          password: userFromClient.password,
+        });
+      } catch (error) {
+        requestStatus(false, error, null);
+      }
+    },
+    [requestStatus, handleLogin]
+  );
 
   const value = useMemo(
     () => ({ isLoading, error, user }),
@@ -71,6 +72,7 @@ const useUsers = () => {
     value,
     handleLogin,
     handleLogout,
+    handleSignup,
   };
 };
 

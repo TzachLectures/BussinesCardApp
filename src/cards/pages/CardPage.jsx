@@ -9,6 +9,7 @@ import CardsFeedback from "../components/CardsFeedback";
 
 export default function CardPage() {
   const { cards, isLoading, error, handleGetCards } = useCards();
+
   useEffect(() => {
     handleGetCards();
   }, []);

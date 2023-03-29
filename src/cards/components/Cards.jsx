@@ -1,5 +1,7 @@
 import { Grid, Typography } from "@mui/material";
+import { arrayOf } from "prop-types";
 import React from "react";
+import cardType from "../models/types/cardType";
 import CardBussinesComponent from "./card/CardBussinesComponent";
 
 export default function Cards({ cards }) {
@@ -30,3 +32,7 @@ export default function Cards({ cards }) {
     </>
   );
 }
+
+Cards.propTypes = {
+  cards: arrayOf(cardType),
+};
