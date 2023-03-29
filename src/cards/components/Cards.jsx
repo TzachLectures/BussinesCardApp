@@ -4,10 +4,7 @@ import React from "react";
 import cardType from "../models/types/cardType";
 import CardBussinesComponent from "./card/CardBussinesComponent";
 
-export default function Cards({ cards }) {
-  const handleDelete = (id) => {
-    console.log(`Card ${id} is deleted`);
-  };
+export default function Cards({ cards, handleDelete }) {
   const handleEdit = (id) => {
     console.log(`Card ${id} is Edited`);
   };

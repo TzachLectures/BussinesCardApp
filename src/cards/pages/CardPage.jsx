@@ -13,7 +13,9 @@ export default function CardPage() {
   useEffect(() => {
     handleGetCards();
   }, []);
-
+  const handleDelete = (id) => {
+    console.log(`card ${id} deleted`);
+  };
   return (
     <div>
       <Container sx={{ mt: 2 }}>
@@ -21,7 +23,12 @@ export default function CardPage() {
           title="Cards"
           subtitle="On this page you can find all bussines cards from all categories"
         />
-        <CardsFeedback isLoading={isLoading} error={error} cards={cards} />
+        <CardsFeedback
+          isLoading={isLoading}
+          error={error}
+          cards={cards}
+          handleDelete={handleDelete}
+        />
       </Container>
     </div>
   );

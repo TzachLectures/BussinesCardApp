@@ -4,7 +4,12 @@ import Error from "../../components/Error";
 import Spinner from "../../components/Spinner";
 import Cards from "./Cards";
 
-export default function CardsFeedback({ isLoading, cards, error }) {
+export default function CardsFeedback({
+  isLoading,
+  cards,
+  error,
+  handleDelete,
+}) {
   if (isLoading) return <Spinner />;
   if (error) return <Error errorMessage={error} />;
   if (cards && cards.length === 0) {
@@ -14,6 +19,6 @@ export default function CardsFeedback({ isLoading, cards, error }) {
       </Typography>
     );
   }
-  if (cards) return <Cards cards={cards} />;
+  if (cards) return <Cards cards={cards} handleDelete={handleDelete} />;
   return null;
 }
