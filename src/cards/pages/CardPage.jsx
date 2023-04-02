@@ -8,13 +8,16 @@ import useCards from "../hooks/useCards";
 import CardsFeedback from "../components/CardsFeedback";
 
 export default function CardPage() {
-  const { cards, isLoading, error, handleGetCards } = useCards();
+  const { cards, isLoading, error, handleGetCards, handleDeleteCard } =
+    useCards();
 
   useEffect(() => {
     handleGetCards();
   }, []);
-  const handleDelete = (id) => {
-    console.log(`card ${id} deleted`);
+
+  const handleDelete = async (id) => {
+    await handleDeleteCard(id);
+    handleGetCards();
   };
   return (
     <div>

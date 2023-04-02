@@ -1,11 +1,14 @@
 import { Box, CardActions, IconButton } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import CallIcon from "@mui/icons-material/Call";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { func, string } from "prop-types";
 import { useUser } from "../../../users/providers/UserProvider";
+import CardDeleteDialog from "./CardDeleteDialog";
+import { useNavigate } from "react-router-dom";
+import ROUTES from "../../../routes/routesModel";
 
 export default function CardActionBar({
   handleDelete,
@@ -15,7 +18,13 @@ export default function CardActionBar({
   user_id,
 }) {
   const { user } = useUser();
-  console.log(user);
+  const [isDialogOpen, setDialog] = useState(false);
+  const navigate = useNavigate();
+  const handleDeleteCard = () => {
+    handleDelete(id);
+    setDialog(false);
+  };
+
   return (
     <>
       <CardActions sx={{ paddingTop: 0, justifyContent: "space-between" }}>
@@ -24,11 +33,14 @@ export default function CardActionBar({
             <>
               <IconButton
                 aria-label="Delete Card"
-                onClick={() => handleDelete(id)}
+                onClick={() => setDialog(true)}
               >
                 <DeleteIcon />
               </IconButton>
-              <IconButton aria-label="Edit Card" onClick={() => handleEdit(id)}>
+              <IconButton
+                aria-label="Edit Card"
+                onClick={() => navigate(`${ROUTES.EDIT_CARD}/${id}`)}
+              >
                 <ModeEditIcon />
               </IconButton>
             </>
@@ -49,6 +61,11 @@ export default function CardActionBar({
           )}
         </Box>
       </CardActions>
+      <CardDeleteDialog
+        isDialogOpen={isDialogOpen}
+        onChangeDialog={() => setDialog(false)}
+        onDelete={handleDeleteCard}
+      />
     </>
   );
 }

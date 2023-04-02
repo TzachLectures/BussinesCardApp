@@ -5,6 +5,7 @@ import React from "react";
 import { useTheme } from "../../../../providers/ThemeProvider";
 import { useUser } from "../../../../users/providers/UserProvider";
 import Logged from "./Logged";
+import MoreButton from "./MoreButton";
 import NotLogged from "./NotLogged";
 
 export default function RightNavBar() {
@@ -12,13 +13,19 @@ export default function RightNavBar() {
   const { user } = useUser();
   return (
     <>
-      <Box sx={{ display: "flex", alignItems: "center" }}>
+      <Box
+        sx={{
+          display: { xs: "none", md: "inline-flex" },
+          alignItems: "center",
+        }}
+      >
         <IconButton sx={{ ml: 1 }} onClick={toggleDarkMode}>
           {isDark ? <LightModeIcon /> : <DarkModeIcon />}
         </IconButton>
         {user && <Logged />}
         {!user && <NotLogged />}
       </Box>
+      <MoreButton />
     </>
   );
 }

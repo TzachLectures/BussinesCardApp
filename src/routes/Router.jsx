@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import CardDetailsPage from "../cards/pages/CardDetailsPage";
 import CardPage from "../cards/pages/CardPage";
+import EditCardPage from "../cards/pages/EditCardPage";
 import FavCards from "../cards/pages/FavCards";
 import MyCards from "../cards/pages/MyCards";
 import AboutPage from "../pages/AboutPage";
@@ -43,6 +44,7 @@ export default function Router() {
       <Route path={ROUTES.SIGNUP} element={<SignupPage />} />
       <Route path={ROUTES.FAV_CARDS} element={<FavCards />} />
       <Route path={ROUTES.MY_CARDS} element={<MyCards />} />
+      <Route path={`${ROUTES.EDIT_CARD}/:id`} element={<EditCardPage />} />
       <Route path={`${ROUTES.CARD_INFO}/:id`} element={<CardDetailsPage />} />
       <Route path={ROUTES.SANDBOX} element={<SandBox />}>
         <Route path="counter" element={<Counter />} />
