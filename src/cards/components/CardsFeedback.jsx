@@ -1,10 +1,10 @@
 import { Typography } from "@mui/material";
-import React from "react";
+import React, { memo } from "react";
 import Error from "../../components/Error";
 import Spinner from "../../components/Spinner";
 import Cards from "./Cards";
 
-export default function CardsFeedback({
+export default memo(function CardsFeedback({
   isLoading,
   cards,
   error,
@@ -21,4 +21,4 @@ export default function CardsFeedback({
   }
   if (cards) return <Cards cards={cards} handleDelete={handleDelete} />;
   return null;
-}
+});

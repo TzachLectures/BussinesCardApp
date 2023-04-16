@@ -8,8 +8,8 @@ import useCards from "../hooks/useCards";
 import CardsFeedback from "../components/CardsFeedback";
 
 export default function CardPage() {
-  const { cards, isLoading, error, handleGetCards, handleDeleteCard } =
-    useCards();
+  const { value, handleGetCards, handleDeleteCard } = useCards();
+  const { cards, error, isLoading } = value;
 
   useEffect(() => {
     handleGetCards();

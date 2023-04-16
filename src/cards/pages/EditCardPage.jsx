@@ -16,7 +16,12 @@ export default function EditCardPage() {
   //id of the card - useParams
   const { id } = useParams();
   //handleUpdateCard & handleGetCard & card - useCards
-  const { handleUpdateCard, handleGetCard, card } = useCards();
+  const {
+    handleUpdateCard,
+    handleGetCard,
+    value: { card },
+  } = useCards();
+
   //user - useUser (provider)
   const { user } = useUser();
   //useForm (initialForm,schema,onSubmit)

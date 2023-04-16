@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import useAxios from "../../hooks/useAxios";
 import { useSnack } from "../../providers/SnackbarProvider";
 import { useUser } from "../../users/providers/UserProvider";
@@ -28,7 +28,7 @@ export default function useCards() {
     setCard(card);
   };
 
-  const handleGetCards = async () => {
+  const handleGetCards = useCallback(async () => {
     try {
       setLoading(true);
       const cards = await getCards();
@@ -37,9 +37,9 @@ export default function useCards() {
     } catch (error) {
       requestStatus(false, error, null);
     }
-  };
+  }, []);
 
-  const handleGetMyCards = async () => {
+  const handleGetMyCards = useCallback(async () => {
     try {
       setLoading(true);
       const cards = await getMyCards();
@@ -47,9 +47,9 @@ export default function useCards() {
     } catch (error) {
       requestStatus(false, error, null);
     }
-  };
+  }, []);
 
-  const handleDeleteCard = async (cardId) => {
+  const handleDeleteCard = useCallback(async (cardId) => {
     try {
       setLoading(true);
       await deleteCard(cardId);
@@ -58,10 +58,10 @@ export default function useCards() {
       setLoading(false);
       setError(error);
     }
-  };
+  }, []);
 
   //handleGetCard
-  const handleGetCard = async (cardId) => {
+  const handleGetCard = useCallback(async (cardId) => {
     try {
       setLoading(true);
       const card = await getCard(cardId);
@@ -70,10 +70,10 @@ export default function useCards() {
     } catch (error) {
       requestStatus(false, error, null);
     }
-  };
+  }, []);
 
   //handleUpdateCard
-  const handleUpdateCard = async (cardId, cardFromClient) => {
+  const handleUpdateCard = useCallback(async (cardId, cardFromClient) => {
     try {
       setLoading(true);
       const card = await editCard(cardId, cardFromClient);
@@ -82,10 +82,10 @@ export default function useCards() {
     } catch (error) {
       requestStatus(false, error, null);
     }
-  };
+  }, []);
 
   //handleLikeCard
-  const handleLikeCard = async (cardId) => {
+  const handleLikeCard = useCallback(async (cardId) => {
     try {
       const card = await changeLikeStatus(cardId);
       requestStatus(false, null, cards, card);
@@ -93,9 +93,9 @@ export default function useCards() {
     } catch (error) {
       requestStatus(false, error, null);
     }
-  };
+  }, []);
   //handleGetFavCards
-  const handleGetFavCards = async () => {
+  const handleGetFavCards = useCallback(async () => {
     try {
       setLoading(true);
       const cards = await getCards();
@@ -104,10 +104,10 @@ export default function useCards() {
     } catch (error) {
       requestStatus(false, error, null);
     }
-  };
+  }, []);
 
   //handleCreateCard
-  const handleCreateCard = async (cardFromClient) => {
+  const handleCreateCard = useCallback(async (cardFromClient) => {
     try {
       setLoading(true);
       const card = await createCard(cardFromClient);
@@ -116,13 +116,14 @@ export default function useCards() {
     } catch (error) {
       requestStatus(false, error, null);
     }
-  };
+  }, []);
+
+  const value = useMemo(() => {
+    return { isLoading, cards, card, error };
+  }, [isLoading, cards, card, error]);
 
   return {
-    card,
-    cards,
-    isLoading,
-    error,
+    value,
     handleGetCards,
     handleGetMyCards,
     handleDeleteCard,

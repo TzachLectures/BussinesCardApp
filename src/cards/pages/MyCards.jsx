@@ -8,8 +8,9 @@ import CardsFeedback from "../components/CardsFeedback";
 import useCards from "../hooks/useCards";
 
 export default function MyCards() {
-  const { cards, isLoading, error, handleGetMyCards, handleDeleteCard } =
-    useCards();
+  const { value, handleGetMyCards, handleDeleteCard } = useCards();
+  const { cards, error, isLoading } = value;
+
   const { user } = useUser();
   const navigate = useNavigate();
 
