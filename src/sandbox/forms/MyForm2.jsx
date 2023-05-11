@@ -48,7 +48,6 @@ export default function MyForm2() {
     return error ? true : false;
   };
 
-  console.log(errors);
   return (
     <>
       <Box

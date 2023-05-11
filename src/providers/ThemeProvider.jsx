@@ -33,7 +33,7 @@ export default function ThemeProvider({ children }) {
 
   return (
     <MuiThemeProvider theme={theme}>
-      <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+      <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
     </MuiThemeProvider>
   );
 }
